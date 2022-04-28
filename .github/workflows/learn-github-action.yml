@@ -1,0 +1,14 @@
+name: learn-github-actions
+on: [push]
+jobs:
+  check-python-version:
+    strategy:
+      matrix:
+        os: [ubuntu-latest,windows-latest,macos-latest]
+    runs-on: ${{matrix.os}}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+        with:
+          python-version: '3.6'
+      - run: python --version
